@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Character Food Preferences</title>
+  <title>FEFW Meal Guide</title>
   <style>
     :root {
       --bg: #111827;
@@ -138,8 +138,8 @@
 <body>
 
   <div class="header">
-    <h1>🎮 Game Character Diet Log</h1>
-    <p>Select an affinity level to see which characters fall into that tier.</p>
+    <h1>Fire Emblem Fortune's Weave Meal Guide</h1>
+    <p>My personal guide to see which character likes/hates a certain food.</p>
   </div>
 
   <div class="tabs">
@@ -190,6 +190,7 @@
       { id: "mu", name: "Mu", img: "images/characters/Mu.PNG" },
       { id: "olympia", name: "Olympia", img: "images/characters/Olympia.PNG" },
       { id: "bertrand", name: "Bertrand", img: "images/characters/Bertrand.PNG" },
+      { id: "gaitz", name: "Gaitz", img: "images/characters/Gaitz.PNG" },
       { id: "dante", name: "Dante", img: "images/characters/Dante.PNG" },
       { id: "goliath", name: "Goliath", img: "images/characters/Goliath.PNG" },
       { id: "jester", name: "Jester", img: "images/characters/Jester.PNG" },
@@ -204,9 +205,9 @@
       { id: "dadao", name: "Dadao", img: "images/characters/Dadao.PNG" },
       { id: "halvin", name: "Halvin", img: "images/characters/Halvin.PNG" },
       { id: "orchel", name: "Orchel", img: "images/characters/Orchel.PNG" },
+      { id: "diego", name: "Diego", img: "images/characters/Diego.PNG" },
       { id: "ninae", name: "Ninae", img: "images/characters/Ninae.PNG" },
       { id: "loretta", name: "Loretta", img: "images/characters/Loretta.PNG" },
-      { id: "diego", name: "Diego", img: "images/characters/Diego.PNG" },
       { id: "seteth", name: "Seteth", img: "images/characters/Seteth.PNG" },
       { id: "aswan", name: "Aswan", img: "images/characters/Aswan.PNG" },
       { id: "nathan", name: "Nathan", img: "images/characters/Nathan.PNG" },
@@ -227,16 +228,20 @@
       { id: "peppe", name: "Peppe", img: "images/characters/Peppe.PNG" },
       { id: "jasmine", name: "Jasmine", img: "images/characters/Jasmine.PNG" },
       { id: "inyoni", name: "Inyoni", img: "images/characters/Inyoni.PNG" },
-      { id: "sothis", name: "Sothis", img: "images/characters/Sothis.PNG" },
-      { id: "kalla", name: "Kalla", img: "images/characters/Kalla.PNG" },
-      { id: "jurah", name: "Jurah", img: "images/characters/Jurah.PNG" },
-      { id: "smyrnos", name: "Smyrnos", img: "images/characters/Smyrnos.PNG" },
-      { id: "mars", name: "Mars", img: "images/characters/Mars.PNG" },
-      { id: "aurora", name: "Aurora", img: "images/characters/Aurora.PNG" },
       { id: "fortuna", name: "Fortuna", img: "images/characters/Fortuna.PNG" },
+      { id: "aurora", name: "Aurora", img: "images/characters/Aurora.PNG" },
+      { id: "mars", name: "Mars", img: "images/characters/Mars.PNG" },
+      { id: "smyrnos", name: "Smyrnos", img: "images/characters/Smyrnos.PNG" },
+      { id: "jurah", name: "Jurah", img: "images/characters/Jurah.PNG" },
+      { id: "kalla", name: "Kalla", img: "images/characters/Kalla.PNG" },
+      { id: "sothis", name: "Sothis", img: "images/characters/Sothis.PNG" },
+
+
+
+
+
       { id: "centurio", name: "Centurio", img: "images/characters/Centurio.PNG" },
       { id: "anna", name: "Anna", img: "images/characters/Anna.PNG" },
-      { id: "gaitz", name: "Gaitz", img: "images/characters/Gaitz.PNG" },
       { id: "troy", name: "Troy", img: "images/characters/Troy.PNG" },
       { id: "honghua", name: "Honghua", img: "images/characters/HongHua.PNG" }
     ];
@@ -265,6 +270,7 @@
       mu: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       olympia: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       bertrand: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
+      gaitz: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       dante: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       goliath: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       jester: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
@@ -279,9 +285,9 @@
       dadao: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       halvin: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       orchel: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
+      diego: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },      
       ninae: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       loretta: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
-      diego: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       seteth: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       aswan: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       nathan: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
@@ -302,16 +308,15 @@
       peppe: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       jasmine: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       inyoni: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
-      sothis: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
-      kalla: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
-      jurah: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
-      smyrnos: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
-      mars: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
-      aurora: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       fortuna: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
+      aurora: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
+      mars: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
+      smyrnos: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
+      judah: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
+      kalla: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
+      sothis: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       centurio: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       anna: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
-      gaitz: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       troy: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       honghua: { ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null }
     };
