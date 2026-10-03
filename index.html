@@ -6,12 +6,13 @@
   <title>FEFW Meal Guide</title>
   <style>
     :root {
-      --bg: #111827;
-      --card-bg: #1f2937;
-      --accent: #38bdf8;
-      --text: #f3f4f6;
-      --text-muted: #9ca3af;
-      --border: #374151;
+      /* Rich warm dark brown color scheme */
+      --bg: #2d1e18;          /* Main dark wood background */
+      --card-bg: #3d2b22;     /* Medium brown for rows & buttons */
+      --accent: #eab308;      /* Warm golden accent for active tab/highlights */
+      --text: #fef3c7;        /* Soft warm cream text */
+      --text-muted: #a89280;  /* Muted warm grey-brown text */
+      --border: #543a2e;      /* Border brown */
     }
 
     body {
@@ -54,7 +55,7 @@
     }
 
     .preference-table {
-      max-width: 950px;
+      max-width: 1400px; /* Increased from 950px */
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -67,8 +68,10 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 20px;
+      padding: 24px 32px; /* Increased horizontal padding */
       gap: 30px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .food-sidebar {
