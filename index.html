@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Food Preferences</title>
+  <style>
+    :root {
+      --bg: #111827;
+      --card-bg: #1f2937;
+      --accent: #38bdf8;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border: #374151;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 30px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+
+    .preference-table {
+      max-width: 950px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .food-row {
+      display: flex;
+      align-items: center;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      gap: 30px;
+    }
+
+    .food-sidebar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 140px;
+      min-width: 140px;
+      border-right: 1px solid var(--border);
+      padding-right: 20px;
+    }
+
+    .food-sidebar img {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 12px; /* Uniform square with small rounded corner */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    }
+
+    .food-sidebar span {
+      margin-top: 10px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    .character-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      flex-grow: 1;
+    }
+
+    .character-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 90px;
+    }
+
+    .character-card img {
+      width: 85px;
+      height: 85px;
+      object-fit: cover;
+      border-radius: 12px; /* Matches food photo style */
+      border: 2px solid var(--border);
+    }
+
+    .character-card.target img {
+      border: 2px solid var(--accent);
+    }
+
+    .character-card span {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .no-chars {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>🎮 Game Character Diet Log</h1>
+    <p>Select an affinity level to see which characters fall into that tier.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab(4, this)">❤ Loves</button>
+    <button class="tab-btn" onclick="switchTab(3, this)">👍 Likes</button>
+    <button class="tab-btn" onclick="switchTab(2, this)">😐 Fine With</button>
+    <button class="tab-btn" onclick="switchTab(1, this)">❌ Hates</button>
+  </div>
+
+  <div id="table-container" class="preference-table"></div>
+
+  <script>
+    // -------------------------------------------------------------------------
+    // 1. DATA CONFIGURATION (Edit your foods, characters, and ratings here)
+    // -------------------------------------------------------------------------
+    // Images are square-cropped 1:1 aspect ratio
+    const FOODS = [
+      { id: "burger", name: "Glazed Burger", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=300&auto=format&fit=crop" },
+      { id: "sushi", name: "Dragon Roll", img: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=300&auto=format&fit=crop" },
+      { id: "cake", name: "Berry Sponge Cake", img: "https://images.unsplash.com/photo-1562440499-64c9a111f713?q=80&w=300&auto=format&fit=crop" },
+      { id: "coffee", name: "Black Coffee", img: "https://images.unsplash.com/photo-1514432324609-63103a85965c?q=80&w=300&auto=format&fit=crop" }
+    ];
+
+    const CHARACTERS = [
+      { id: "hero", name: "Valor", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=300&auto=format&fit=crop" },
+      { id: "mage", name: "Lyra", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=300&auto=format&fit=crop" },
+      { id: "rogue", name: "Kael", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=300&auto=format&fit=crop" },
+      { id: "cleric", name: "Elara", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=300&auto=format&fit=crop" }
+    ];
+
+    // Score Ratings (4 = Loves, 3 = Likes, 2 = Fine With, 1 = Hates)
+    const RATINGS = {
+      hero: { burger: 4, sushi: 3, cake: 2, coffee: 1 },
+      mage: { burger: 1, sushi: 4, cake: 4, coffee: 3 },
+      rogue: { burger: 3, sushi: 2, cake: 1, coffee: 4 },
+      cleric: { burger: 2, sushi: 3, cake: 3, coffee: 2 }
+    };
+
+    // -------------------------------------------------------------------------
+    // 2. RENDERING LOGIC
+    // -------------------------------------------------------------------------
+    function renderTable(targetScore) {
+      const container = document.getElementById("table-container");
+      container.innerHTML = "";
+
+      FOODS.forEach(food => {
+        // Create food row
+        const row = document.createElement("div");
+        row.className = "food-row";
+
+        // Food Sidebar (Left Column)
+        const foodSidebar = `
+          <div class="food-sidebar">
+            <img src="${food.img}" alt="${food.name}">
+            <span>${food.name}</span>
+          </div>
+        `;
+
+        // Find matching characters
+        const matchingChars = CHARACTERS.filter(char => RATINGS[char.id]?.[food.id] === targetScore);
+
+        // Build character cards HTML
+        let charListHTML = `<div class="character-list">`;
+        if (matchingChars.length > 0) {
+          matchingChars.forEach(char => {
+            charListHTML += `
+              <div class="character-card target">
+                <img src="${char.img}" alt="${char.name}">
+                <span>${char.name}</span>
+              </div>
+            `;
+          });
+        } else {
+          charListHTML += `<span class="no-chars">(None)</span>`;
+        }
+        charListHTML += `</div>`;
+
+        row.innerHTML = foodSidebar + charListHTML;
+        container.appendChild(row);
+      });
+    }
+
+    function switchTab(score, btnElement) {
+      document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+      btnElement.classList.add("active");
+      renderTable(score);
+    }
+
+    // Initial render for "Loves" (Score 4)
+    renderTable(4);
+  </script>
+</body>
+</html>
