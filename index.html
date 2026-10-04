@@ -107,6 +107,16 @@
       flex-grow: 1;
     }
 
+    /* Container for All Characters view */
+    .all-characters-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
     .character-card {
       position: relative;
       display: flex;
@@ -195,6 +205,7 @@
     <button class="tab-btn" onclick="switchTab(3, this)">👍 Likes</button>
     <button class="tab-btn" onclick="switchTab(2, this)">😐 Fine With</button>
     <button class="tab-btn" onclick="switchTab(1, this)">❌ Hates</button>
+    <button class="tab-btn" onclick="switchTab('all', this)">👥 All Characters</button>
   </div>
 
   <div id="table-container" class="preference-table"></div>
@@ -303,7 +314,6 @@
       { id: "anna", name: "Anna", img: "images/characters/Anna.PNG" },
       { id: "troy", name: "Troy", img: "images/characters/Troy.PNG" },
       { id: "honghua", name: "Honghua", img: "images/characters/HongHua.PNG" }
-
     ];
 
     // Score Ratings (4 = Loves, 3 = Likes, 2 = Fine With, 1 = Hates, null = Unassigned)
@@ -421,6 +431,30 @@
       const container = document.getElementById("table-container");
       container.innerHTML = "";
 
+      if (targetScore === "all") {
+        // Render All Characters View
+        const allCard = document.createElement("div");
+        allCard.className = "all-characters-container";
+
+        let charListHTML = `<div class="character-list">`;
+        CHARACTERS.forEach(char => {
+          const isChecked = checkedCharacters[char.id] ? "checked" : "";
+          charListHTML += `
+            <div class="character-card target ${isChecked}" data-id="${char.id}" onclick="toggleCheck('${char.id}')">
+              <div class="check-badge">✓</div>
+              <img src="${char.img}" alt="${char.name}">
+              <span>${char.name}</span>
+            </div>
+          `;
+        });
+        charListHTML += `</div>`;
+
+        allCard.innerHTML = charListHTML;
+        container.appendChild(allCard);
+        return;
+      }
+
+      // Render Meal Preference Rows
       FOODS.forEach(food => {
         const row = document.createElement("div");
         row.className = "food-row";
