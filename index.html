@@ -306,85 +306,89 @@
 
     ];
 
+    // Score Ratings (4 = Loves, 3 = Likes, 2 = Fine With, 1 = Hates, null = Unassigned)
     const RATINGS = {
       eshmelF: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
-      sofia: { ham: 4, soup: 4, madazin: 4, goat: 4, scallop: 4, pumpkin: 4, boar: 4, lobster: 4, pear: 4, sticks: 4, fish: 4, paste: 4 },
-      
-      cai: { ham: 4, soup: 4, madazin: 3, goat: null, scallop: null, pumpkin: null, boar: 4, lobster: 4, pear: 4, sticks: 4, fish: 4, paste: 3 },
+
+      cai: { ham: 4, soup: 4, madazin: 3, goat: 4, scallop: 4, pumpkin: 3, boar: 4, lobster: 4, pear: 4, sticks: 4, fish: 4, paste: 3 },
       tialla: { ham: 1, soup: 2, madazin: 4, goat: 2, scallop: 2, pumpkin: 3, boar: 1, lobster: 4, pear: 3, sticks: 1, fish: 2, paste: 3 },
       peter: { ham: 4, soup: 3, madazin: 3, goat: 4, scallop: 3, pumpkin: 4, boar: 3, lobster: 4, pear: 4, sticks: 4, fish: 2, paste: 4 },
       ultand: { ham: 3, soup: 4, madazin: 3, goat: 3, scallop: 4, pumpkin: 3, boar: 3, lobster: 4, pear: 3, sticks: 3, fish: 4, paste: 3 },
       castor: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
-      
-      dietrich: { ham: 2, soup: 2, madazin: 3, goat: 3, scallop: 2, pumpkin: 4, boar: 2, lobster: 3, pear: 4, sticks: 2, fish: 2, paste: 4 },
-      fabio: { ham: 4, soup: 3, madazin: 1, goat: 2, scallop: 3, pumpkin: 3, boar: 4, lobster: 1, pear: 3, sticks: 4, fish: 4, paste: 4 },
-      esmeralda: { ham: 2, soup: 3, madazin: 3, goat: 3, scallop: 2, pumpkin: 4, boar: 2, lobster: 4, pear: 4, sticks: 1, fish: 3, paste: 4 },
-      mikaela: { ham: 4, soup: 3, madazin: 1, goat: 2, scallop: 3, pumpkin: 2, boar: 4, lobster: 1, pear: 2, sticks: 4, fish: 4, paste: 3 },
-      
-      theodora: { ham: 3, soup: 3, madazin: 2, goat: 3, scallop: 3, pumpkin: 2, boar: 3, lobster: 3, pear: 2, sticks: 1, fish: 3, paste: 2 },
-      bonaventure: { ham: 2, soup: 4, madazin: 1, goat: 1, scallop: 4, pumpkin: 3, boar: 2, lobster: 2, pear: 4, sticks: 3, fish: 4, paste: 3 },
-      tobias: { ham: 4, soup: 4, madazin: 1, goat: 2, scallop: 2, pumpkin: 3, boar: 4, lobster: 2, pear: 1, sticks: 4, fish: 4, paste: 3 },
-      lysander: { ham: 4, soup: 4, madazin: 2, goat: 3, scallop: 3, pumpkin: 3, boar: 3, lobster: 3, pear: 2, sticks: 3, fish: 3, paste: 2 },
-      lilian: { ham: 4, soup: 4, madazin: 3, goat: 4, scallop: 4, pumpkin: 4, boar: 4, lobster: 4, pear: 3, sticks: 4, fish: 4, paste: 3 },
-      
-      leda: { ham: 3, soup: 3, madazin: 1, goat: 1, scallop: 3, pumpkin: 3, boar: 3, lobster: 1, pear: 3, sticks: 3, fish: 3, paste: 3 },
-      buccar: { ham: 1, soup: 1, madazin: 2, goat: 1, scallop: 3, pumpkin: 2, boar: 3, lobster: 1, pear: 4, sticks: 3, fish: 3, paste: 4 },
-      sirocco: { ham: 4, soup: 3, madazin: 1, goat: 2, scallop: 1, pumpkin: 3, boar: 4, lobster: 1, pear: 1, sticks: 2, fish: 3, paste: 3 },
-      mu: { ham: 1, soup: 1, madazin: 4, goat: 2, scallop: 1, pumpkin: 3, boar: 1, lobster: 2, pear: 3, sticks: 1, fish: 1, paste: 4 },
-      olympia: { ham: 3, soup: 2, madazin: 3, goat: 4, scallop: 2, pumpkin: 2, boar: 3, lobster: 3, pear: 2, sticks: 1, fish: 2, paste: 2 },
-      
+
       bertrand: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
       gaitz: { ham: 2, soup: 2, madazin: 1, goat: 1, scallop: 2, pumpkin: 2, boar: 3, lobster: 1, pear: 2, sticks: 2, fish: 3, paste: 3 },
       jester: { ham: 1, soup: 1, madazin: 3, goat: 2, scallop: 2, pumpkin: 2, boar: 2, lobster: 2, pear: 3, sticks: 2, fish: 2, paste: 3 },
       goliath: { ham: 4, soup: 3, madazin: 1, goat: 4, scallop: 3, pumpkin: 2, boar: 4, lobster: 1, pear: 2, sticks: 4, fish: 3, paste: 2 },
       dante: { ham: 3, soup: 1, madazin: 3, goat: 3, scallop: 1, pumpkin: 3, boar: 3, lobster: 1, pear: 3, sticks: 3, fish: 1, paste: 3 },
-      
-      talimun: { ham: 4, soup: 4, madazin: 2, goat: 2, scallop: 4, pumpkin: 4, boar: 4, lobster: 2, pear: 4, sticks: 4, fish: 4, paste: 4 },
-      ursula: { ham: 1, soup: 2, madazin: 3, goat: 1, scallop: 2, pumpkin: 3, boar: 1, lobster: 2, pear: 3, sticks: 1, fish: 2, paste: 3 },
 
-      ludia: { ham: 3, soup: 3, madazin: 3, goat: 3, scallop: 1, pumpkin: 3, boar: 4, lobster: 3, pear: 1, sticks: 1, fish: 4, paste: 4 },
-      simon: { ham: 2, soup: 2, madazin: 4, goat: 3, scallop: 2, pumpkin: 3, boar: 1, lobster: 3, pear: 3, sticks: 2, fish: 1, paste: 2 },
-      fianna: { ham: 4, soup: 4, madazin: 1, goat: 1, scallop: 1, pumpkin: 1, boar: 2, lobster: 1, pear: 1, sticks: 2, fish: 1, paste: 1 },
-      
-      anatolia: { ham: 3, soup: 3, madazin: 3, goat: null, scallop: null, pumpkin: null, boar: 3, lobster: 3, pear: 3, sticks: 3, fish: 3, paste: 3 },
-      nezha: { ham: 2, soup: 2, madazin: 4, goat: 3, scallop: 3, pumpkin: 3, boar: 3, lobster: 3, pear: 4, sticks: 3, fish: 3, paste: 4 },
-      shalan: { ham: 3, soup: 3, madazin: 2, goat: 2, scallop: 3, pumpkin: 3, boar: 3, lobster: 2, pear: 3, sticks: 3, fish: 3, paste: 3 },
-      dadao: { ham: 4, soup: 4, madazin: 3, goat: 4, scallop: 4, pumpkin: 3, boar: 4, lobster: 4, pear: 4, sticks: 4, fish: 4, paste: 3 },
-      halvin: { ham: 2, soup: 2, madazin: 4, goat: 3, scallop: 2, pumpkin: 3, boar: 1, lobster: 3, pear: 3, sticks: 2, fish: 1, paste: 2 },
-      
+      dietrich: { ham: 2, soup: 2, madazin: 3, goat: 3, scallop: 2, pumpkin: 4, boar: 2, lobster: 3, pear: 4, sticks: 2, fish: 2, paste: 4 },
+      fabio: { ham: 4, soup: 3, madazin: 1, goat: 2, scallop: 3, pumpkin: 3, boar: 4, lobster: 1, pear: 3, sticks: 4, fish: 4, paste: 4 },
+      esmeralda: { ham: 2, soup: 3, madazin: 3, goat: 3, scallop: 2, pumpkin: 4, boar: 2, lobster: 4, pear: 4, sticks: 1, fish: 3, paste: 4 },
+      mikaela: { ham: 4, soup: 3, madazin: 1, goat: 2, scallop: 3, pumpkin: 2, boar: 4, lobster: 1, pear: 2, sticks: 4, fish: 4, paste: 3 },
+
       orchel: { ham: 4, soup: 4, madazin: 4, goat: 4, scallop: 4, pumpkin: 4, boar: 4, lobster: 4, pear: 4, sticks: 4, fish: 4, paste: 4 },
-      diego: { ham: 2, soup: 1, madazin: 2, goat: 3, scallop: 3, pumpkin: 1, boar: 3, lobster: 2, pear: 3, sticks: 4, fish: 2, paste: 2 },      
+      diego: { ham: 2, soup: 1, madazin: 2, goat: 3, scallop: 3, pumpkin: 1, boar: 3, lobster: 2, pear: 3, sticks: 4, fish: 2, paste: 2 },
       loretta: { ham: 2, soup: 2, madazin: 4, goat: 4, scallop: 3, pumpkin: 4, boar: 3, lobster: 4, pear: 3, sticks: 3, fish: 3, paste: 3 },
       seteth: { ham: 2, soup: 3, madazin: 2, goat: 2, scallop: 2, pumpkin: 2, boar: 2, lobster: 1, pear: 1, sticks: 1, fish: 3, paste: 2 },
       ninae: { ham: 2, soup: 2, madazin: 3, goat: 3, scallop: 1, pumpkin: 2, boar: 2, lobster: 3, pear: 1, sticks: 1, fish: 2, paste: 2 },
+
+      theodora: { ham: 3, soup: 3, madazin: 2, goat: 3, scallop: 3, pumpkin: 2, boar: 3, lobster: 3, pear: 2, sticks: 1, fish: 3, paste: 2 },
+      bonaventure: { ham: 2, soup: 4, madazin: 1, goat: 1, scallop: 4, pumpkin: 3, boar: 2, lobster: 2, pear: 4, sticks: 3, fish: 4, paste: 3 },
+      tobias: { ham: 4, soup: 4, madazin: 1, goat: 2, scallop: 2, pumpkin: 3, boar: 4, lobster: 2, pear: 1, sticks: 4, fish: 4, paste: 3 },
+      lilian: { ham: 4, soup: 4, madazin: 3, goat: 4, scallop: 4, pumpkin: 4, boar: 4, lobster: 4, pear: 3, sticks: 4, fish: 4, paste: 3 },
+      lysander: { ham: 4, soup: 4, madazin: 2, goat: 3, scallop: 3, pumpkin: 3, boar: 3, lobster: 3, pear: 2, sticks: 3, fish: 3, paste: 2 },
+
+      leda: { ham: 3, soup: 3, madazin: 1, goat: 1, scallop: 3, pumpkin: 3, boar: 3, lobster: 1, pear: 3, sticks: 3, fish: 3, paste: 3 },
+      buccar: { ham: 1, soup: 1, madazin: 2, goat: 1, scallop: 3, pumpkin: 2, boar: 3, lobster: 1, pear: 4, sticks: 3, fish: 3, paste: 4 },
+      sirocco: { ham: 4, soup: 3, madazin: 1, goat: 2, scallop: 1, pumpkin: 3, boar: 4, lobster: 1, pear: 1, sticks: 2, fish: 3, paste: 3 },
+      mu: { ham: 1, soup: 1, madazin: 4, goat: 2, scallop: 1, pumpkin: 3, boar: 1, lobster: 2, pear: 3, sticks: 1, fish: 1, paste: 4 },
+      olympia: { ham: 3, soup: 2, madazin: 3, goat: 4, scallop: 2, pumpkin: 2, boar: 3, lobster: 3, pear: 2, sticks: 1, fish: 2, paste: 2 },
+
+      talimun: { ham: 4, soup: 4, madazin: 2, goat: 2, scallop: 4, pumpkin: 4, boar: 4, lobster: 2, pear: 4, sticks: 4, fish: 4, paste: 4 },
+      ursula: { ham: 1, soup: 2, madazin: 3, goat: 1, scallop: 2, pumpkin: 3, boar: 1, lobster: 2, pear: 3, sticks: 1, fish: 2, paste: 3 },
+
+      simon: { ham: 2, soup: 2, madazin: 4, goat: 3, scallop: 2, pumpkin: 3, boar: 1, lobster: 3, pear: 3, sticks: 2, fish: 1, paste: 2 },
+      ludia: { ham: 3, soup: 3, madazin: 3, goat: 3, scallop: 1, pumpkin: 3, boar: 4, lobster: 3, pear: 1, sticks: 1, fish: 4, paste: 4 },
+      fianna: { ham: 4, soup: 4, madazin: 1, goat: 1, scallop: 1, pumpkin: 1, boar: 2, lobster: 1, pear: 1, sticks: 2, fish: 1, paste: 1 },
+
+      anatolia: { ham: 3, soup: 3, madazin: 3, goat: 3, scallop: 3, pumpkin: 3, boar: 3, lobster: 3, pear: 3, sticks: 3, fish: 3, paste: 3 },
+      shalan: { ham: 3, soup: 3, madazin: 2, goat: 2, scallop: 3, pumpkin: 3, boar: 3, lobster: 2, pear: 3, sticks: 3, fish: 3, paste: 3 },
+      nezha: { ham: 2, soup: 2, madazin: 4, goat: 3, scallop: 3, pumpkin: 3, boar: 3, lobster: 3, pear: 4, sticks: 3, fish: 3, paste: 4 },
+      dadao: { ham: 4, soup: 4, madazin: 3, goat: 4, scallop: 4, pumpkin: 3, boar: 4, lobster: 4, pear: 4, sticks: 4, fish: 4, paste: 3 },
+      halvin: { ham: 2, soup: 2, madazin: 4, goat: 3, scallop: 2, pumpkin: 3, boar: 1, lobster: 3, pear: 3, sticks: 2, fish: 1, paste: 2 },
+
+      yangjie: { ham: 2, soup: 2, madazin: 1, goat: 1, scallop: 2, pumpkin: 3, boar: 2, lobster: 1, pear: 3, sticks: 2, fish: 2, paste: 3 },
+      io: { ham: 4, soup: 1, madazin: 2, goat: 3, scallop: 1, pumpkin: 3, boar: 4, lobster: 1, pear: 1, sticks: 2, fish: 1, paste: 3 },
+      peppe: { ham: 3, soup: 4, madazin: 3, goat: 3, scallop: 4, pumpkin: 3, boar: 3, lobster: 4, pear: 3, sticks: 3, fish: 4, paste: 3 },
+      noctula: { ham: 2, soup: 1, madazin: 2, goat: 3, scallop: 2, pumpkin: 1, boar: 3, lobster: 2, pear: 2, sticks: 3, fish: 2, paste: 2 },
+      sofia: { ham: 4, soup: 4, madazin: 4, goat: 4, scallop: 4, pumpkin: 4, boar: 4, lobster: 4, pear: 4, sticks: 4, fish: 4, paste: 4 },
+      nydine: { ham: 1, soup: 3, madazin: 3, goat: 2, scallop: 3, pumpkin: 2, boar: 1, lobster: 4, pear: 2, sticks: 1, fish: 3, paste: 2 },
+      zarcone: { ham: 4, soup: 4, madazin: 1, goat: 1, scallop: 1, pumpkin: 4, boar: 2, lobster: 1, pear: 4, sticks: 1, fish: 2, paste: 4 },
+      majide: { ham: 3, soup: 3, madazin: 1, goat: 1, scallop: 3, pumpkin: 3, boar: 3, lobster: 1, pear: 3, sticks: 3, fish: 3, paste: 3 },
+      benditz: { ham: 3, soup: 3, madazin: 3, goat: 3, scallop: 4, pumpkin: 3, boar: 3, lobster: 3, pear: 4, sticks: 4, fish: 3, paste: 3 },
+      jasmine: { ham: 1, soup: 3, madazin: 2, goat: 1, scallop: 4, pumpkin: 2, boar: 1, lobster: 3, pear: 3, sticks: 2, fish: 3, paste: 2 },
+      alexandra: { ham: 3, soup: 3, madazin: 4, goat: 3, scallop: 3, pumpkin: 4, boar: 3, lobster: 3, pear: 4, sticks: 3, fish: 3, paste: 4 },
+      centurio: { ham: 4, soup: 4, madazin: 4, goat: 4, scallop: 2, pumpkin: 4, boar: 4, lobster: 4, pear: 2, sticks: 2, fish: 4, paste: 4 },
+      kiroc: { ham: 4, soup: 4, madazin: 1, goat: 1, scallop: 4, pumpkin: 3, boar: 4, lobster: 2, pear: 3, sticks: 4, fish: 4, paste: 3 },
+
+      guzran: { ham: 4, soup: 4, madazin: 2, goat: 2, scallop: 4, pumpkin: 4, boar: 4, lobster: 2, pear: 4, sticks: 4, fish: 4, paste: 4 },
+      catania: { ham: 2, soup: 2, madazin: 2, goat: 2, scallop: 2, pumpkin: 2, boar: 3, lobster: 2, pear: 2, sticks: 2, fish: 3, paste: 3 },
+      nuzzuo: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
+      inyoni: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
+
       aswan: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
       nathan: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
       creek: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
-      guzran: { ham: 4, soup: 4, madazin: 2, goat: 2, scallop: 4, pumpkin: 4, boar: 4, lobster: 2, pear: 4, sticks: 4, fish: 4, paste: 4 },
-      nydine: { ham: 1, soup: 3, madazin: 3, goat: 2, scallop: 3, pumpkin: 2, boar: 1, lobster: 4, pear: 2, sticks: 1, fish: 3, paste: 2 },
-      io: { ham: 4, soup: 1, madazin: 2, goat: 3, scallop: 1, pumpkin: 3, boar: 4, lobster: 1, pear: 1, sticks: 2, fish: 1, paste: 3 },
-      catania: { ham: 2, soup: 2, madazin: 2, goat: 2, scallop: 2, pumpkin: 2, boar: 3, lobster: 2, pear: 2, sticks: 2, fish: 3, paste: 3 },
-      benditz: { ham: 3, soup: 3, madazin: 3, goat: 3, scallop: 4, pumpkin: 3, boar: 3, lobster: 3, pear: 4, sticks: 4, fish: 3, paste: 3 },
-      alexandra: { ham: 3, soup: 3, madazin: 4, goat: 3, scallop: 3, pumpkin: 4, boar: 3, lobster: 3, pear: 4, sticks: 3, fish: 3, paste: 4 },
-      noctula: { ham: 2, soup: 1, madazin: 2, goat: 3, scallop: 2, pumpkin: 1, boar: 3, lobster: 2, pear: 2, sticks: 3, fish: 2, paste: 2 },
-      yangjie: { ham: 2, soup: 2, madazin: 1, goat: 1, scallop: 2, pumpkin: 3, boar: 2, lobster: 1, pear: 3, sticks: 2, fish: 2, paste: 3 },
-      nuzzuo: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
-      majide: { ham: 3, soup: 3, madazin: 1, goat: 1, scallop: 3, pumpkin: 3, boar: 3, lobster: 1, pear: 3, sticks: 3, fish: 3, paste: 3 },
-      zarcone: { ham: 4, soup: 4, madazin: 1, goat: 1, scallop: 1, pumpkin: 4, boar: 2, lobster: 1, pear: 4, sticks: 1, fish: 2, paste: 4 },
-      kiroc: { ham: 4, soup: 4, madazin: 1, goat: 1, scallop: 4, pumpkin: 3, boar: 4, lobster: 2, pear: 3, sticks: 4, fish: 4, paste: 3 },
-      peppe: { ham: 3, soup: 4, madazin: 3, goat: 3, scallop: 4, pumpkin: 3, boar: 3, lobster: 4, pear: 3, sticks: 3, fish: 4, paste: 3 },
-      jasmine: { ham: 1, soup: 3, madazin: 2, goat: 1, scallop: 4, pumpkin: 2, boar: 1, lobster: 3, pear: 3, sticks: 2, fish: 3, paste: 2 },
-      inyoni: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
-      
+
       fortuna: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
       aurora: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
       mars: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
       smyrnos: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
-      judah: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
+      jurah: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
       kalla: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
       sothis: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
-      
-      centurio: { ham: null, soup: null, madazin: null, goat: 4, scallop: 2, pumpkin: 4, boar: 4, lobster: 4, pear: 2, sticks: null, fish: null, paste: null },
+
       anna: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
       troy: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
       honghua: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null }
