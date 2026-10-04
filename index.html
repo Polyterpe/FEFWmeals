@@ -161,15 +161,17 @@
     // Images are square-cropped 1:1 aspect ratio
     const FOODS = [
       { id: "ham", name: "Salt-Crusted Ham", img: "images/meals/Ham.jpg" },
-      { id: "pumpkin", name: "Pumpkin Soup", img: "images/meals/Pumpkin.jpg" },
       { id: "soup", name: "Fish Sauce Soup", img: "images/meals/Soup.jpg" },
-      { id: "meat", name: "Sand Boar and Beans", img: "images/meals/Meat.jpg" },
+      { id: "medazine", name: "Madazins", img: "images/meals/Medazine.jpg" },
+      
       { id: "goat", name: "Goat Roast", img: "images/meals/Goat.jpg" },
+      { id: "scallop", name: "Garlic Seared Scallops", img: "images/meals/Scallop.jpg" },
+      { id: "pumpkin", name: "Pumpkin Soup", img: "images/meals/Pumpkin.jpg" },
+
+      { id: "meat", name: "Sand Boar and Beans", img: "images/meals/Meat.jpg" },
       { id: "fish", name: "Charred Fish Grill", img: "images/meals/Fish.jpg" },
       { id: "lobster", name: "Cheese-Coated Crayfish", img: "images/meals/Lobster.jpg" },
-      { id: "scallop", name: "Garlic Seared Scallops", img: "images/meals/Scallop.jpg" },
       { id: "sticks", name: "Sweet-and-Sour Stick Bugs", img: "images/meals/Sticks.jpg" },
-      { id: "medazine", name: "Madazins", img: "images/meals/Medazine.jpg" },
       { id: "glazed", name: "Coffee-Berry Paste", img: "images/meals/Glazed.jpg" },
       { id: "pear", name: "Honey-Poached Pear", img: "images/meals/Pear.jpg" },
 
@@ -291,9 +293,9 @@
       talimun: { goat: null, scallop: null, pumpkin: null, ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       ursula: { goat: null, scallop: null, pumpkin: null, ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
 
-      ludia: { goat: null, scallop: null, pumpkin: null, ham: 3, glazed: 4, pear: 1, lobster: 3, meat: 4, fish: 4, sticks: 1, soup: 3, medazine: 3 },
-      simon: { goat: null, scallop: null, pumpkin: null, ham: 2, glazed: 2, pear: 3, lobster: 3, meat: 1, fish: 1, sticks: 2, soup: 2, medazine:4 },
-      fianna: { goat: null, scallop: null, pumpkin: null, ham: 4, glazed: 1, pear: 1, lobster: 1, meat: 2, fish: 1, sticks: 2, soup: 4, medazine: 1 },
+      ludia: { goat: 3, scallop: 1, pumpkin: 3, ham: 3, glazed: 4, pear: 1, lobster: 3, meat: 4, fish: 4, sticks: 1, soup: 3, medazine: 3 },
+      simon: { goat: 3, scallop: 2, pumpkin: 3, ham: 2, glazed: 2, pear: 3, lobster: 3, meat: 1, fish: 1, sticks: 2, soup: 2, medazine:4 },
+      fianna: { goat: 1, scallop: 1, pumpkin: 1, ham: 4, glazed: 1, pear: 1, lobster: 1, meat: 2, fish: 1, sticks: 2, soup: 4, medazine: 1 },
       
       anatolia: { goat: null, scallop: null, pumpkin: null, ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       nezha: { goat: 3, scallop: 3, pumpkin: 3, ham: 2, glazed: 4, pear: null, lobster: null, meat: null, fish: 3, sticks: 3, soup: 2, medazine: 4 },
@@ -314,9 +316,9 @@
       io: { goat: 3, scallop: 1, pumpkin: 3, ham: 4, glazed: 3, pear: 1, lobster: 1, meat: 4, fish: 1, sticks: 2, soup: 1, medazine: 2 },
       catania: { goat: 2, scallop: 2, pumpkin: 2, ham: 2, glazed: 3, pear: 2, lobster: 2, meat: 3, fish: 3, sticks: 2, soup: 2, medazine: 2 },
       benditz: { goat: 3, scallop: 4, pumpkin: 3, ham: 3, glazed: 3, pear: 4, lobster: 3, meat: 3, fish: 3, sticks: 4, soup: 3, medazine: 3 },
-      alexandra: { goat: null, scallop: null, pumpkin: null, ham: null, glazed: null, pear: 4, lobster: 3, meat: 3, fish: null, sticks: null, soup: null, medazine: null },
+      alexandra: { goat: 3, scallop: 3, pumpkin: 4, ham: 3, glazed: null, pear: 4, lobster: 3, meat: 3, fish: null, sticks: null, soup: 3, medazine: 4 },
       noctula: { goat: 3, scallop: 2, pumpkin: 1, ham: 2, glazed: 2, pear: 2, lobster: 2, meat: 3, fish: 2, sticks: 3, soup: 1, medazine: 2 },
-      yangjie: { goat: null, scallop: null, pumpkin: null, ham: null, glazed: 3, pear: 3, lobster: 1, meat: 2, fish: 2, sticks: 2, soup: null, medazine: null },
+      yangjie: { goat: 1, scallop: 2, pumpkin: 3, ham: 2, glazed: 3, pear: 3, lobster: 1, meat: 2, fish: 2, sticks: 2, soup: 2, medazine: 1 },
       nuzzuo: { goat: null, scallop: null, pumpkin: null, ham: null, glazed: null, pear: null, lobster: null, meat: null, fish: null, sticks: null, soup: null, medazine: null },
       majide: { goat: 1, scallop: 3, pumpkin: 3, ham: 3, glazed: 3, pear: 3, lobster: 1, meat: 3, fish: 3, sticks: 3, soup: 3, medazine: 1 },
       zarcone: { goat: 1, scallop: 1, pumpkin: 4, ham: 4, glazed: 4, pear: 4, lobster: 1, meat: 2, fish: 2, sticks: 1, soup: 4, medazine: 1 },
