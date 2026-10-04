@@ -108,10 +108,13 @@
     }
 
     .character-card {
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 90px;
+      cursor: pointer;
+      user-select: none;
     }
 
     .character-card img {
@@ -120,10 +123,48 @@
       object-fit: cover;
       border-radius: 12px; /* Matches food photo style */
       border: 2px solid var(--border);
+      transition: border-color 0.2s ease, opacity 0.2s ease;
     }
 
     .character-card.target img {
       border: 2px solid var(--accent);
+    }
+
+    .character-card:not(.checked) img {
+      opacity: 0.75;
+    }
+
+    /* Top-Right Green Checkmark Badge */
+    .check-badge {
+      position: absolute;
+      top: -6px;
+      right: 0px;
+      background: #15803d;
+      color: #ffffff;
+      border: 2px solid #2d1e18;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      opacity: 0;
+      transform: scale(0.5);
+      z-index: 2;
+    }
+
+    .character-card.checked .check-badge {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .character-card.checked img {
+      opacity: 1;
+      border-color: #22c55e !important;
     }
 
     .character-card span {
@@ -243,10 +284,6 @@
       { id: "kalla", name: "Kalla", img: "images/characters/Kalla.PNG" },
       { id: "sothis", name: "Sothis", img: "images/characters/Sothis.PNG" },
 
-
-
-
-
       { id: "centurio", name: "Centurio", img: "images/characters/Centurio.PNG" },
       { id: "anna", name: "Anna", img: "images/characters/Anna.PNG" },
       { id: "troy", name: "Troy", img: "images/characters/Troy.PNG" },
@@ -338,7 +375,26 @@
       honghua: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null }
     };
 
-    
+    // Load checked state from browser cache (localStorage)
+    let checkedCharacters = JSON.parse(localStorage.getItem("checkedChars") || "{}");
+
+    function toggleCheck(charId) {
+      // Toggle state
+      checkedCharacters[charId] = !checkedCharacters[charId];
+      
+      // Save updated state to browser storage
+      localStorage.setItem("checkedChars", JSON.stringify(checkedCharacters));
+      
+      // Update UI state for all instances of this character on screen
+      document.querySelectorAll(`.character-card[data-id="${charId}"]`).forEach(card => {
+        if (checkedCharacters[charId]) {
+          card.classList.add("checked");
+        } else {
+          card.classList.remove("checked");
+        }
+      });
+    }
+
     // -------------------------------------------------------------------------
     // 2. RENDERING LOGIC
     // -------------------------------------------------------------------------
@@ -366,8 +422,10 @@
         let charListHTML = `<div class="character-list">`;
         if (matchingChars.length > 0) {
           matchingChars.forEach(char => {
+            const isChecked = checkedCharacters[char.id] ? "checked" : "";
             charListHTML += `
-              <div class="character-card target">
+              <div class="character-card target ${isChecked}" data-id="${char.id}" onclick="toggleCheck('${char.id}')">
+                <div class="check-badge">✓</div>
                 <img src="${char.img}" alt="${char.name}">
                 <span>${char.name}</span>
               </div>
