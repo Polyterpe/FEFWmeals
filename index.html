@@ -55,7 +55,7 @@
     }
 
     .preference-table {
-      max-width: 1400px; /* Increased from 950px */
+      max-width: 1400px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -68,7 +68,7 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 24px 32px; /* Increased horizontal padding */
+      padding: 24px 32px;
       gap: 30px;
       width: 100%;
       box-sizing: border-box;
@@ -88,7 +88,7 @@
       width: 110px;
       height: 110px;
       object-fit: cover;
-      border-radius: 12px; /* Uniform square with small rounded corner */
+      border-radius: 12px;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
     }
 
@@ -121,17 +121,25 @@
       width: 85px;
       height: 85px;
       object-fit: cover;
-      border-radius: 12px; /* Matches food photo style */
+      border-radius: 12px;
       border: 2px solid var(--border);
-      transition: border-color 0.2s ease, opacity 0.2s ease;
+      transition: all 0.2s ease;
+      opacity: 1; /* Full brightness by default */
     }
 
     .character-card.target img {
       border: 2px solid var(--accent);
     }
 
-    .character-card:not(.checked) img {
-      opacity: 0.75;
+    /* Dim checked portraits and fade text */
+    .character-card.checked img {
+      opacity: 0.35 !important;
+      filter: grayscale(60%);
+      border-color: #543a2e !important;
+    }
+
+    .character-card.checked span {
+      opacity: 0.5;
     }
 
     /* Top-Right Green Checkmark Badge */
@@ -162,15 +170,11 @@
       transform: scale(1);
     }
 
-    .character-card.checked img {
-      opacity: 1;
-      border-color: #22c55e !important;
-    }
-
     .character-card span {
       margin-top: 8px;
       font-size: 0.9rem;
       text-align: center;
+      transition: opacity 0.2s ease;
     }
 
     .no-chars {
@@ -199,7 +203,6 @@
     // -------------------------------------------------------------------------
     // 1. DATA CONFIGURATION (Edit your foods, characters, and ratings here)
     // -------------------------------------------------------------------------
-    // Images are square-cropped 1:1 aspect ratio
     const FOODS = [
       { id: "ham", name: "Salt-Crusted Ham", img: "images/meals/Ham.jpg" },
       { id: "soup", name: "Fish Sauce Soup", img: "images/meals/Soup.jpg" },
@@ -213,7 +216,6 @@
       { id: "sticks", name: "Sweet-and-Sour Stick Bugs", img: "images/meals/Sticks.jpg" },
       { id: "fish", name: "Charred Fish Grill", img: "images/meals/Fish.jpg" },
       { id: "paste", name: "Coffee-Berry Paste", img: "images/meals/Glazed.jpg" },
-
     ];
 
     const CHARACTERS = [
@@ -283,14 +285,12 @@
       { id: "jurah", name: "Jurah", img: "images/characters/Jurah.PNG" },
       { id: "kalla", name: "Kalla", img: "images/characters/Kalla.PNG" },
       { id: "sothis", name: "Sothis", img: "images/characters/Sothis.PNG" },
-
       { id: "centurio", name: "Centurio", img: "images/characters/Centurio.PNG" },
       { id: "anna", name: "Anna", img: "images/characters/Anna.PNG" },
       { id: "troy", name: "Troy", img: "images/characters/Troy.PNG" },
       { id: "honghua", name: "Honghua", img: "images/characters/HongHua.PNG" }
     ];
 
-    // Score Ratings (4 = Loves, 3 = Likes, 2 = Fine With, 1 = Hates, null = Unassigned)
     const RATINGS = {
       eshmelF: { ham: null, soup: null, madazin: null, goat: null, scallop: null, pumpkin: null, boar: null, lobster: null, pear: null, sticks: null, fish: null, paste: null },
       sofia: { ham: 4, soup: 4, madazin: 4, goat: 4, scallop: 4, pumpkin: 4, boar: 4, lobster: 4, pear: 4, sticks: 4, fish: 4, paste: 4 },
@@ -403,11 +403,9 @@
       container.innerHTML = "";
 
       FOODS.forEach(food => {
-        // Create food row
         const row = document.createElement("div");
         row.className = "food-row";
 
-        // Food Sidebar (Left Column)
         const foodSidebar = `
           <div class="food-sidebar">
             <img src="${food.img}" alt="${food.name}">
@@ -415,10 +413,8 @@
           </div>
         `;
 
-        // Find matching characters
         const matchingChars = CHARACTERS.filter(char => RATINGS[char.id]?.[food.id] === targetScore);
 
-        // Build character cards HTML
         let charListHTML = `<div class="character-list">`;
         if (matchingChars.length > 0) {
           matchingChars.forEach(char => {
